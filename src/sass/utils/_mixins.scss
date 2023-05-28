@@ -1,0 +1,61 @@
+@mixin box-color{
+    background-color: map-get($palette-dark-theme, dark-desatured-blue);
+};
+
+@mixin overlay-color{
+    @each $key, $value in $social-networks{
+        &-#{$key}{
+            background: $value;
+        }
+    }
+}
+
+@mixin disposition($position : static , $top: 0px , $right: 0px , $bottom : 0px, $left : 0px ){
+    position: $position;
+    left: $left;
+    top : $top;
+    bottom : $bottom;
+    right : $right;
+
+}
+
+@mixin mark-color($rate){
+    @if($rate == "up"){
+        color : $lime-green;
+    }
+    @else{
+        color : $bright-red;
+    }
+}
+
+@mixin grid-disposition($column-start : auto ,$column-end : auto , $row-start : auto, $row-end : auto){
+    grid-column-start: $column-start;
+    grid-column-end: $column-end;
+    grid-row-start: $row-start;
+    grid-row-end : $row-end;
+}
+
+@mixin grid-disposition-2($order : 1 , $flex-basis : 0%){
+    order : $order;
+    flex-basis : $flex-basis;
+}
+
+@mixin translation($transition : all 0s){
+    -webkit-transition: transform .4s;
+    transition: transform .4s;
+}
+
+
+@mixin themify($themes : $themes){
+    @each $theme, $map in $themes{
+        &--theme-#{$theme}{
+            $theme-map : () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}');
+                $theme-map: map-merge($theme-map, ($key: $value)) !global;
+                }
+            @content;
+            $theme-map : null !global ;
+        }
+    }
+}

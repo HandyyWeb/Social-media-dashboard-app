@@ -1,0 +1,81 @@
+.wrapper{
+    width: 100vw;
+    min-height: 10rem;
+    margin-bottom: -2rem;
+    border-radius: 0px 0px 25px 25px;
+    z-index: 0;
+    display: grid;
+    justify-content: center;
+    font-weight: bolder;
+    @include themify{
+        background-color: themed('headerBackgroundColor');
+    }
+    @media only screen and (min-width: 550px) {
+        position: relative;
+        min-height: 12rem;
+        margin-bottom: 0px;
+        width: 100vw;
+    }
+}
+.header{
+    width: 85vw;
+    min-height: 8rem;
+    padding: 1.5rem 0rem 1.5rem 0rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: [fisrt] 75vw;
+    @media only screen and (min-width: 550px) {
+        width: 90vw;
+        justify-content: start;
+        grid-template-columns: [first] 50% [end] 50%;
+        }
+    &__title{
+        padding-left: 13px;
+        @include themify{
+            color: themed('textColor2');
+        }
+        &--position{
+            padding-left: 0px;
+        }
+        @media only screen and (min-width : 550px) {
+            width: 30rem;
+            font-size: 30px;
+            position: relative;
+            @include grid-disposition($column-start : 1 , $row-start : 1)
+        }
+    }
+    &__subtitle{
+        @include themify{
+            color: themed('textColor1');
+        }
+        @media only screen and (min-width : 550px) {
+            font-size: 20px;
+        }
+        &--position{
+            grid-column-start: 1;
+            @media only screen and (min-width:550px) {
+                grid-row-start: 1;
+                position: relative;
+                top: 40px;
+            }
+        }
+        &--position-2{
+            width: 10rem;
+            display: block;
+            @include disposition(relative , 6px , 0 ,0 ,-75vw);
+            @media only screen and (min-width:550px) {
+                width: 110px;
+                display: block;
+                @include disposition(relative, 6px , 0 , 0, -105px);
+            }
+        }
+    }
+    &__separator{
+        height: 0rem;
+        margin: 1rem 0rem 0rem 0rem;
+        @include grid-disposition($column-start : 1, $column-end : 3);
+        @media only screen and (min-width: 550px) {
+            display: none;
+        }
+    }
+}

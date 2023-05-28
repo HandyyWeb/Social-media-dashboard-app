@@ -1,0 +1,51 @@
+.switch{
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    position: relative;
+    display: inline-block;
+    background-color: $lime-green;
+    @include grid-disposition(2,2,0,0);
+    @media only screen and (min-width : 550px) {
+        margin-right: 1rem;
+        @include disposition(absolute, 30px , 0px , 0 , 0);
+    }
+    &__checkbox{
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    &__slider{
+        cursor: pointer;
+        background-color: $lime-green;
+        @include translation;
+        @include disposition($position : absolute);
+        &::before{
+            content: "";
+            width: 26px;
+            height: 26px;
+            @include translation;
+            @include disposition(absolute,2px,0,4px,4px);
+        }
+        &--round{
+            border-radius: 36px;
+        }
+        &--round::before{
+            border-radius: 50%;
+        }
+        &--theme-light::before{
+            background-color: hsl(0, 0%, 100%);
+        }
+        &--theme-dark::before{
+            background-color: hsl(230, 17%, 14%);
+        }
+        @media only screen and (min-width : 550px) {
+            @include grid-disposition(2 , auto , 1 ,auto )
+        }
+    }
+    &__checkbox:checked + &__slider::before{
+        transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        -webkit-transform: translateX(26px);
+    }
+}

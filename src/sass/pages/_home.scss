@@ -1,0 +1,33 @@
+#root{
+    display : grid;
+    justify-content : center;
+    align-items : center;
+    min-height: 100%;
+    @media only screen and (min-width: 550px) {
+        justify-content: start;
+        align-items: start;
+    }
+}
+
+.main{
+    z-index: 11;
+    @include themify{
+        background-color: themed( 'backgroundColor' );
+    }
+    @media only screen and (min-width: 550px){
+        margin-top: -125px;
+        padding: 0 3rem;
+    }
+    &__part-1{
+        @media only screen and (min-width: 550px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+    &__part-2{
+        @media only screen and (min-width: 550px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+}

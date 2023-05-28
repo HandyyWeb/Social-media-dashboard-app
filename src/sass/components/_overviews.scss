@@ -1,0 +1,50 @@
+.summary{
+    margin: 1rem;
+    position: relative;
+    &_bloc{
+        min-height: 7rem;
+        margin-top : 1rem;
+        padding: 15px 0 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        &-statistic{
+            color : map-get($palette-dark-theme, desatured-blue );
+            @include grid-disposition-2(1,50%);
+            @include disposition(relative,10px,0,0,30px);
+            @include themify{
+                color: themed('textColor1');
+            };
+        }
+        &-image{
+            height: 1.5rem;
+            max-width: 1.5rem;
+            @include grid-disposition-2(2,50%);
+            @include disposition(relative,10px,0,0,90px);
+        }
+        &-number{
+            font-weight: bolder;
+            font-size: 30px;
+            color : $white;
+            @include grid-disposition-2(3,50%);
+            @include disposition(relative,10px,7px,0,30px);
+            @include themify{
+                color: themed('textColor2');
+            };
+        }
+        &-rate{
+            @include grid-disposition-2(4,50%);
+            @include disposition(relative,20px,0,0,90px);
+            &--color-up{
+                @include mark-color("up")
+            }
+            &--color-down{
+                @include mark-color("down")
+            }
+        }
+        &{
+            @include themify{
+                background-color: themed('cardBackgroundColor'),
+            }
+        }
+    }
+}
