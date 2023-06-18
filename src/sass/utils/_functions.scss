@@ -1,0 +1,3 @@
+@function themed($keys){
+    @return map-get($theme-map, $keys);
+}
